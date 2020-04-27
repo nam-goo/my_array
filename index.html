@@ -28,10 +28,9 @@
             { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
             { first: 'Hanna', last: 'HammarstrÃ¶m', year: 1829, passed: 1909 }
         ];
-        
-       
-        const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
+
+        const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
         // Array.prototype.filter()
         // 1. Filter the list of inventors for those who were born in the 1500's
 
@@ -49,7 +48,7 @@
         // 3. Sort the inventors by birthdate, oldest to youngest
 
         const arr4 = inventors.sort(function (array1, array2) {
-            return  array2.year - array1.year;
+            return array2.year - array1.year;
         });
         const arr5 = inventors.sort((arr1, arr2) => arr2.year - arr1.year);
         console.table(arr4);
@@ -66,36 +65,48 @@
         }, 0);
 
         console.log(arr6);
-      
+
         // 5. Sort the inventors by years lived
         const arr7 = inventors.sort(function (array1, array2) {
-            return  (array2.passed - array2.year) - (array1.passed - array1.year)
+            return (array2.passed - array2.year) - (array1.passed - array1.year)
         });
 
         console.table(arr7);
         console.log(arr7);
-      // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-      // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+        // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+        // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-    
-        
-        const arr8 = people.filter(arr => arr.includes);
+
+
+        const arr8 = people.filter(arr => arr.includes("Ca"));
         console.log(arr8);
         // 7. sort Exercise
         // Sort the people alphabetically by last name
 
-        const arr9 = inventors.sort((arr1, arr2)=>{
+        const alpha = people.sort((lastOne, nextOne) => {
+            //console.log(lastOne);
+            const [aLast, aFirst] = lastOne.split(', ');
             
+            const [bLast, bFirst] = nextOne.split(', ');
+            
+            return bFirst[0] > aFirst[0] ? -1 : 1;
+        });
+
+        console.log(alpha);
+
+        const arr9 = inventors.sort((arr1, arr2) => {
+
 
             return arr2.last.charCodeAt(0) - arr1.last.charCodeAt(0);
 
 
         });
 
+
         console.log(arr9);
 
-        const arr10 = inventors.sort((arr1, arr2)=>{
-            
+        const arr10 = inventors.sort((arr1, arr2) => {
+
 
             return arr1.last.charCodeAt(0) - arr2.last.charCodeAt(0);
 
@@ -109,29 +120,25 @@
 
         const arr11 = data.filter(arr => arr.includes("car"));
         console.log(arr11.length);
-        
+
         const arr12 = data.filter(arr => arr.includes("truck"));
         console.log(arr12.length);
-        
+
         const obj = {
-            car : arr11.length,
-            truck : arr1.length
+            car: arr11.length,
+            truck: arr1.length
         };
 
         console.table(obj);
 
-        const tp = data.reduce(function(obj, item){
+        const tp = data.reduce(function (obj, item) {
 
-            if(!obj[item]){
-                console.log("if");
-            console.log(item);
-
+            if (!obj[item]) {
                 obj[item] = 0;
-                console.log(obj);
             }
             obj[item]++;
             return obj;
-        },{});
+        }, {});
 
         console.log(tp);
     </script>
